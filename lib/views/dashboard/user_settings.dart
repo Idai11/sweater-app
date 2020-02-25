@@ -7,6 +7,12 @@ class UserSettings extends StatefulWidget {
 }
 
 class _UserSettingsState extends State<UserSettings> {
+  final _firstNameController = TextEditingController();
+  final _lastNameController = TextEditingController();
+  final _emailController = TextEditingController();
+  final _oldPassController = TextEditingController();
+  final _newPassController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Card(
@@ -32,7 +38,41 @@ class _UserSettingsState extends State<UserSettings> {
                   title: Text("Change Name"),
                   leading: Icon(Icons.person),
                   onTap: () {
+                    showDialog(
+                      context: context,
+                      builder: (context) => AlertDialog(
+                        title: Text("Change your name"),
+                        content: Column(
 
+                          children: <Widget>[
+                            TextField(
+                              controller: _firstNameController,
+                              decoration: InputDecoration(
+                                labelText: "First Name"
+                              ),
+                            ),
+                            TextField(
+                              controller: _firstNameController,
+                              decoration: InputDecoration(
+                                  labelText: "Last Name"
+                              ),
+                            )
+                          ],
+                        ),
+                        actions: <Widget>[
+                          FlatButton(
+                            child: Text("CANCEL"),
+                            onPressed: () { Navigator.pop(context); },
+                          ),
+                          FlatButton(
+                            child: Text("CONFIRM"),
+                            onPressed: () {
+
+                            },
+                          )
+                        ],
+                      )
+                    );
                   },
                 ),
                 Divider(),
@@ -70,5 +110,16 @@ class _UserSettingsState extends State<UserSettings> {
         borderRadius: BorderRadius.all(Radius.circular(24))
       ),
     );
+  }
+
+  @override
+  void dispose() {
+    _emailController.dispose();
+    _firstNameController.dispose();
+    _lastNameController.dispose();
+    _newPassController.dispose();
+    _oldPassController.dispose();
+
+    super.dispose();
   }
 }

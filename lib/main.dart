@@ -18,6 +18,14 @@ class MyApp extends StatelessWidget {
           ),
           textTheme: ButtonTextTheme.primary
         ),
+        dialogTheme: DialogTheme(
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+          titleTextStyle: TextStyle(
+            color: Colors.green,
+            fontWeight: FontWeight.bold,
+            fontSize: 18
+          )
+        ),
         inputDecorationTheme: InputDecorationTheme(
           border: OutlineInputBorder(
             borderRadius: BorderRadius.all(Radius.circular(30)),
