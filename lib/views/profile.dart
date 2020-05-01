@@ -1,3 +1,7 @@
+/*
+FILE: profile.dart
+ */
+
 import 'package:flutter/material.dart';
 import 'dashboard/user_settings.dart';
 

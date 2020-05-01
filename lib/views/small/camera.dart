@@ -1,3 +1,7 @@
+/*
+FILE: camera.dart
+ */
+
 import 'dart:io';
 
 import 'package:camera/camera.dart';
@@ -24,6 +28,7 @@ class _TakePictureState extends State<TakePicture> {
   Future<void> _initializeCamera() async {
     final cameras = await availableCameras();
 
+    // Initialize a camera controller for the back camera with medium resolution
     _controller = CameraController(
       cameras.first,
       ResolutionPreset.medium
@@ -60,12 +65,16 @@ class _TakePictureState extends State<TakePicture> {
           try {
             await _setupFuture;
 
+            // Get the path for the image
+            // This will be [potId].jpg
             String path = join((await getApplicationDocumentsDirectory()).path,
                 widget.id + ".jpg");
 
+            // If there is already a picture, delete it
             File file = File(path);
             if (await file.exists()) await file.delete();
 
+            // Take and save the picture
             await _controller.takePicture(path);
 
             Navigator.pop(context);

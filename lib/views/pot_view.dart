@@ -1,3 +1,7 @@
+/*
+FILE: pot_view.dart
+ */
+
 import 'dart:io';
 
 import 'package:flutter/material.dart';
@@ -30,9 +34,11 @@ class _PotViewState extends State<PotView> {
   }
 
   Widget _getImgFromData(Map pot) {
+    // Get the file for the pot image
     String path = join(widget.dir.path, pot["_id"] + ".jpg");
     File file = File(path);
 
+    // If the image doesnt exist, display a gray square with camera icon
     if (!file.existsSync()) {
       return AspectRatio(
         aspectRatio: 1,
@@ -43,6 +49,7 @@ class _PotViewState extends State<PotView> {
           ),
         ),
       );
+    // If image exists, display it
     } else {
       return AspectRatio(
           aspectRatio: 1,

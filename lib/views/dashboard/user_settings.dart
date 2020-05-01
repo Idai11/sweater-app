@@ -1,5 +1,10 @@
+/*
+FILE: user_settings.dart
+ */
+
 import 'package:flutter/material.dart';
 import 'package:sweater/utils/local.dart';
+import 'package:sweater/utils/server.dart';
 
 class UserSettings extends StatefulWidget {
   @override
@@ -38,6 +43,7 @@ class _UserSettingsState extends State<UserSettings> {
                   title: Text("Change Name"),
                   leading: Icon(Icons.person),
                   onTap: () {
+                    // #TODO complete change name dialog
                     showDialog(
                       context: context,
                       builder: (context) => AlertDialog(
@@ -96,8 +102,16 @@ class _UserSettingsState extends State<UserSettings> {
                   title: Text("Logout"),
                   leading: Icon(Icons.exit_to_app),
                   onTap: () {
-                    LocalSave.setString("token", "");
-                    Navigator.pushNamedAndRemoveUntil(context, "/login", (route) => false);
+                    // To log out, the saved token is deleted and the user is redirected to the login page
+                    Fetcher.getSavedToken().then((token) {
+                      Fetcher.fetch("""
+                        mutation {
+                          deleteToken
+                        }
+                      """, token);
+                      LocalSave.setString("token", "");
+                      Navigator.pushNamedAndRemoveUntil(context, "/login", (route) => false);
+                    });
                   },
                 )
               ],

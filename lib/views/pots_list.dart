@@ -1,3 +1,7 @@
+/*
+FILE: pot_list.dart
+ */
+
 import 'dart:io';
 
 import 'package:flutter/material.dart';
@@ -36,6 +40,17 @@ class _PotsListState extends State<PotsList> {
     }
   }
 
+  /*
+  Make a request to the API for:
+  All the user's pots and their
+    id
+    name
+    plant
+    date planted
+    light level history
+    moisture level
+    water level
+   */
   Future<Map> potList() async {
     _saveDir = await getApplicationDocumentsDirectory();
     return Fetcher.fetchWithToken("""
@@ -43,7 +58,6 @@ class _PotsListState extends State<PotsList> {
         my_pots {
           _id
           name
-          imgUrl
           plant
           plantDate
           lightHours

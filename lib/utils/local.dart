@@ -1,5 +1,12 @@
+/*
+FILE: local.dart
+ */
+
 import 'package:shared_preferences/shared_preferences.dart';
 
+/*
+This is a helper class for getting data from local memory using SharedPreferences
+ */
 class LocalSave {
   static Future<SharedPreferences> _getPrefs() async {
     return await SharedPreferences.getInstance();

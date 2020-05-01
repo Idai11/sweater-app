@@ -1,3 +1,7 @@
+/*
+FILE: login.dart
+ */
+
 import 'package:flutter/material.dart';
 import 'package:sweater/utils/server.dart';
 
@@ -56,6 +60,7 @@ class _LoginState extends State<Login> {
                     ),
                   ),
                   onPressed: () {
+                    // See fetcher class
                     Fetcher.authenticate(emailController.text, passwordController.text).then((success) {
                       if (success) {
                         Navigator.pushNamedAndRemoveUntil(context, "/", (route) => false);

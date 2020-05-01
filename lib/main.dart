@@ -1,3 +1,7 @@
+/*
+FILE: main.dart
+ */
+
 import 'package:flutter/material.dart';
 import 'views/homepage.dart';
 import 'views/user/signup.dart';

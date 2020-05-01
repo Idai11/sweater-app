@@ -1,3 +1,7 @@
+/*
+FILE: signup.dart
+ */
+
 import 'package:flutter/material.dart';
 
 class SignUp extends StatefulWidget {

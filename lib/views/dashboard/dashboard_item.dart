@@ -1,3 +1,7 @@
+/*
+FILE: dashboard_item.dart
+ */
+
 import 'package:flutter/material.dart';
 
 class DashboardItem extends StatefulWidget {
