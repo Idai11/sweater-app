@@ -1,6 +1,6 @@
-# sweater_x
+# Automatic Pot Phone App
 
-A new Flutter project.
+...
 
 ## Getting Started
 

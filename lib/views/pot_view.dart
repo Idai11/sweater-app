@@ -21,7 +21,7 @@ class PotView extends StatefulWidget {
 class _PotViewState extends State<PotView> {
   Map validity = {
     "plant": true,
-    "moisture": false,
+    "moisture": true,
     "lightHours": true
   };
 
