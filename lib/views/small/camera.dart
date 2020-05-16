@@ -9,6 +9,9 @@ import 'package:flutter/material.dart';
 import 'package:path/path.dart';
 import 'package:path_provider/path_provider.dart';
 
+/*
+This widget describes SCREEN 6
+ */
 class TakePicture extends StatefulWidget {
   final String id;
 
@@ -59,9 +62,9 @@ class _TakePictureState extends State<TakePicture> {
           }
         },
       ),
-      floatingActionButton: FloatingActionButton(
+      floatingActionButton: FloatingActionButton( // WIDGET 1
         child: Icon(Icons.camera_enhance),
-        onPressed: () async {
+        onPressed: () async { // Take and save picture
           try {
             await _setupFuture;
 

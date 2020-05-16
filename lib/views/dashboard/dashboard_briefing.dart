@@ -4,6 +4,9 @@ FILE: dashboard_briefing.dart
 
 import 'package:flutter/material.dart';
 
+/*
+This widget describes WIDGET 4 in SCREEN 2
+ */
 class DashboardBriefing extends StatefulWidget {
   @override
   _DashboardBriefingState createState() => _DashboardBriefingState();
@@ -39,7 +42,7 @@ class _DashboardBriefingState extends State<DashboardBriefing> {
                       size: 80,
                       color: Colors.green,
                     ),
-                    Text(
+                    Text( // This will display if everything is in order
                       "All is good",
                       style: TextStyle(
                         fontSize: 28,

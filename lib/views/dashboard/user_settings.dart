@@ -11,6 +11,10 @@ class UserSettings extends StatefulWidget {
   _UserSettingsState createState() => _UserSettingsState();
 }
 
+/*
+This widget contains all the options seen in SCREEN 3
+Currently, only the logout button is functional
+ */
 class _UserSettingsState extends State<UserSettings> {
   final _firstNameController = TextEditingController();
   final _lastNameController = TextEditingController();
@@ -98,18 +102,21 @@ class _UserSettingsState extends State<UserSettings> {
                   },
                 ),
                 Divider(),
-                ListTile(
+                ListTile( // Widget 3 in SCREEN 3
                   title: Text("Logout"),
                   leading: Icon(Icons.exit_to_app),
                   onTap: () {
-                    // To log out, the saved token is deleted and the user is redirected to the login page
+                    // Logout sequence
+                    // Delete token from server
                     Fetcher.getSavedToken().then((token) {
                       Fetcher.fetch("""
                         mutation {
                           deleteToken
                         }
                       """, token);
+                      // Delete the token from local storage too
                       LocalSave.setString("token", "");
+                      // Navigate from SCREEN 3 to SCREEN 1
                       Navigator.pushNamedAndRemoveUntil(context, "/login", (route) => false);
                     });
                   },

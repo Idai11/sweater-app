@@ -9,6 +9,9 @@ import 'dashboard.dart';
 import 'profile.dart';
 import 'pots_list.dart';
 
+/*
+This widget is a parent to both SCREEN 2 and SCREEN 3
+ */
 class HomePage extends StatefulWidget {
   @override
   _HomePageState createState() => _HomePageState();
@@ -19,6 +22,7 @@ class _HomePageState extends State<HomePage> {
 
   @override
   void initState() {
+    // If token is not valid navigate back to SCREEN 1
     Fetcher.testToken().then((isToken) {
       if (!isToken) {
         SchedulerBinding.instance.addPostFrameCallback((_) {
@@ -43,6 +47,7 @@ class _HomePageState extends State<HomePage> {
       ),
       body: Builder(
         builder: (context) {
+          // This handles the switching between SCREEN 2, 3 according to selection made in WIDGET 1
           if (_currentPage == 0) {
             return Dashboard();
           } else {
@@ -50,7 +55,7 @@ class _HomePageState extends State<HomePage> {
           }
         },
       ),
-      bottomNavigationBar: BottomNavigationBar(
+      bottomNavigationBar: BottomNavigationBar( // WIDGET 1
         items: <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             title: Text("Dashboard"),
@@ -68,9 +73,10 @@ class _HomePageState extends State<HomePage> {
           });
         },
       ),
-      floatingActionButton: FloatingActionButton(
+      floatingActionButton: FloatingActionButton( // WIDGET 1
         child: Icon(Icons.local_florist),
         onPressed: () {
+          // Navigate to SCREEN 4
           Navigator.push(context, MaterialPageRoute(
             builder: (context) {
               return PotsList();

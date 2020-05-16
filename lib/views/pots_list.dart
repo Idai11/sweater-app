@@ -10,6 +10,9 @@ import 'package:path_provider/path_provider.dart';
 import 'pot_view.dart';
 import '../utils/server.dart';
 
+/*
+This widget describes SCREEN 4
+ */
 class PotsList extends StatefulWidget {
   @override
   _PotsListState createState() => _PotsListState();
@@ -81,18 +84,19 @@ class _PotsListState extends State<PotsList> {
       body: FutureBuilder(
         future: potList(),
         builder: (context, snapshot) {
-          if (snapshot.connectionState == ConnectionState.done) {
-            return GridView.builder(
+          if (snapshot.connectionState == ConnectionState.done) { // Wait for pots from server
+            return GridView.builder( // Build a list
                 gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 2,
                   childAspectRatio: 0.8
                 ),
                 itemBuilder: (context, index) {
                   if (index < snapshot.data["data"]["my_pots"].length) {
-                    return Padding(
+                    return Padding( // WIDGET 1 (for each pot)
                         padding: EdgeInsets.all(16),
                         child: InkWell(
                           onTap: () {
+                            // Navigate from SCREEN 4 to SCREEN 5
                             Navigator.push(context, MaterialPageRoute(
                                 builder: (context) {
                                   return PotView(pot: snapshot.data["data"]["my_pots"][index], dir: _saveDir,);
@@ -105,7 +109,7 @@ class _PotsListState extends State<PotsList> {
                               children: <Widget>[
                                 Hero(
                                   tag: "potimage" + snapshot.data["data"]["my_pots"][index]["id"].toString(),
-                                  child: _getImgFromData(snapshot.data["data"]["my_pots"][index]),
+                                  child: _getImgFromData(snapshot.data["data"]["my_pots"][index]), // Picture
                                 ),
                                 Padding(
                                   padding: EdgeInsets.all(4),
@@ -114,7 +118,7 @@ class _PotsListState extends State<PotsList> {
                                     children: <Widget>[
                                       Hero(
                                         tag: "potname" + snapshot.data["data"]["my_pots"][index]["id"].toString(),
-                                        child: Text(
+                                        child: Text( // Pot name
                                           snapshot.data["data"]["my_pots"][index]["name"],
                                           style: TextStyle(
                                               fontWeight: FontWeight.bold,
@@ -122,7 +126,7 @@ class _PotsListState extends State<PotsList> {
                                           ),
                                         ),
                                       ),
-                                      Text(
+                                      Text( // Plant type
                                         snapshot.data["data"]["my_pots"][index]["plant"],
                                         style: TextStyle(
                                             fontSize: 10
@@ -159,11 +163,11 @@ class _PotsListState extends State<PotsList> {
           }
         },
       ),
-      floatingActionButton: FloatingActionButton(
+      floatingActionButton: FloatingActionButton( // WIDGET 2
         backgroundColor: Colors.white,
         child: Icon(Icons.add, color: Colors.black,),
         onPressed: () {
-
+          // Not functional yet
         },
       ),
     );

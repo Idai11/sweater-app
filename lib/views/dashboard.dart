@@ -6,6 +6,9 @@ import 'package:flutter/material.dart';
 import 'dashboard/dashboard_item.dart';
 import 'dashboard/dashboard_briefing.dart';
 
+/*
+THIS WIDGET DESCRIBES SCREEN 2
+ */
 class Dashboard extends StatefulWidget {
   @override
   _DashboardState createState() => _DashboardState();
@@ -19,20 +22,20 @@ class _DashboardState extends State<Dashboard> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
-          DashboardItem(
+          DashboardItem( // WIDGET 2
             title: "Electricity usage",
             value: "0kWh",
             icon: Icons.flash_on,
             iconColor: Colors.yellow,
           ),
-          DashboardItem(
+          DashboardItem( // WIDGET 3
             title: "Water usage",
             value: "0L",
             icon: Icons.cloud,
             iconColor: Colors.blue,
           ),
           Expanded(
-            child: DashboardBriefing(),
+            child: DashboardBriefing(), // WIDGET 4
           )
         ],
       ),

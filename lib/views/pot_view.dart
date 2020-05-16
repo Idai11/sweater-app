@@ -8,6 +8,9 @@ import 'package:flutter/material.dart';
 import 'package:path/path.dart';
 import 'small/camera.dart';
 
+/*
+This widget describes SCREEN 5
+ */
 class PotView extends StatefulWidget {
   final Map pot;
   final Directory dir;
@@ -19,7 +22,7 @@ class PotView extends StatefulWidget {
 }
 
 class _PotViewState extends State<PotView> {
-  Map validity = {
+  Map validity = { //
     "plant": true,
     "moisture": true,
     "lightHours": true
@@ -98,7 +101,7 @@ class _PotViewState extends State<PotView> {
           LinearProgressIndicator(
             value: 0,
           ),
-          ListTile(
+          ListTile( // WIDGET 1
             leading: Icon(Icons.local_florist, color: validity["plant"] ? Colors.grey : Colors.orangeAccent,),
             title: Text("Plant"),
             subtitle: Text(widget.pot["plant"]),
@@ -122,7 +125,7 @@ class _PotViewState extends State<PotView> {
             ),
           ),
           Divider(),
-          ListTile(
+          ListTile( // WIDGET 2
             leading: Icon(Icons.invert_colors, color: validity["moisture"] ? Colors.grey : Colors.orangeAccent,),
             title: Text("Humidity"),
             subtitle: Text(widget.pot["moisture"].toString() + "%"),
@@ -146,7 +149,7 @@ class _PotViewState extends State<PotView> {
             ),
           ),
           Divider(),
-          ListTile(
+          ListTile( // WIDGET 3
             leading: Icon(Icons.wb_incandescent, color: validity["lightHours"] ? Colors.grey : Colors.orangeAccent,),
             title: Text("Light"),
             subtitle: Text(_makeAvg(widget.pot["lightHours"]).toString() + "h/d"),
@@ -171,8 +174,9 @@ class _PotViewState extends State<PotView> {
           ),
         ],
       ),
-      floatingActionButton: FloatingActionButton(
+      floatingActionButton: FloatingActionButton( // WIDGET 4
         onPressed: () {
+          // Navigate to SCREEN 6
           Navigator.push(context, MaterialPageRoute(builder: (context) {
             return TakePicture(id: widget.pot["_id"]);
           }));

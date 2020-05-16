@@ -5,14 +5,17 @@ FILE: login.dart
 import 'package:flutter/material.dart';
 import 'package:sweater/utils/server.dart';
 
+/*
+This widget describes SCREEN 1
+ */
 class Login extends StatefulWidget {
   @override
   _LoginState createState() => _LoginState();
 }
 
 class _LoginState extends State<Login> {
-  final emailController = TextEditingController();
-  final passwordController = TextEditingController();
+  final emailController = TextEditingController(); // CONTROLLER FOR WIDGET 1
+  final passwordController = TextEditingController(); // CONTROLLER FOR WIDGET 2
   String errorMessage;
 
 
@@ -32,7 +35,7 @@ class _LoginState extends State<Login> {
             children: <Widget>[
               Padding(
                 padding: EdgeInsets.symmetric(vertical: 4, horizontal: 16),
-                child: TextFormField(
+                child: TextFormField( // WIDGET 1
                   controller: emailController,
                   decoration: InputDecoration(
                     labelText: "Email",
@@ -41,7 +44,7 @@ class _LoginState extends State<Login> {
               ),
               Padding(
                 padding: EdgeInsets.symmetric(vertical: 4, horizontal: 16),
-                child: TextFormField(
+                child: TextFormField( // WIDGET 2
                   controller: passwordController,
                   obscureText: true,
                   decoration: InputDecoration(
@@ -51,7 +54,7 @@ class _LoginState extends State<Login> {
               ),
               Padding(
                 padding: EdgeInsets.only(top: 48),
-                child: RaisedButton(
+                child: RaisedButton( // WIDGET 3
                   padding: EdgeInsets.all(16),
                   child: Text(
                     "Log In",
@@ -60,9 +63,10 @@ class _LoginState extends State<Login> {
                     ),
                   ),
                   onPressed: () {
-                    // See fetcher class
+                    // Gets input from widget 1, 2 using controllers declared above
                     Fetcher.authenticate(emailController.text, passwordController.text).then((success) {
                       if (success) {
+                        // Navigate from SCREEN 1 to SCREEN 2
                         Navigator.pushNamedAndRemoveUntil(context, "/", (route) => false);
                       } else {
                         setState(() {
@@ -73,7 +77,7 @@ class _LoginState extends State<Login> {
                   },
                 ),
               ),
-              FlatButton(
+              FlatButton( // WIDGET 4
                 child: Text("or Sign Up"),
                 onPressed: () {
                   Navigator.pushNamedAndRemoveUntil(context, "/signup", (Route<dynamic> route) => false);

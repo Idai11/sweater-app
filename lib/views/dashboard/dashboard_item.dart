@@ -4,6 +4,10 @@ FILE: dashboard_item.dart
 
 import 'package:flutter/material.dart';
 
+/*
+This is a template widget used in WIDGET 2, 3 in SCREEN 2
+It display a title, colored icon, and a value
+ */
 class DashboardItem extends StatefulWidget {
   final String title;
   final IconData icon;
